@@ -1,25 +1,22 @@
-import React from 'react'
-import './FaceRecognition.css'
 
+import React from 'react';
+import './FaceRecognition.css';
 
+const FaceRecognition = ({ imageUrl, boxes }) => {
+  return (
+    <div className='center ma'>
+      <div className='absolute mt2'>
+        <img id='inputimage' alt='' src={imageUrl} width='500px' height='auto'/>
 
-//--Creates the image below the input and button--//
-const FaceRecognition = ({imageUrl, box}) =>{
-    return(
-        <div className="center ma">
-            <div className='absolute mt2'>
+        {boxes.map(box => {
+        return <div key={box.topRow} className='bounding-box'  style={{top: box.topRow, right: box.rightCol, bottom: box.bottomRow, left: box.leftCol}}></div>
+      	})
+      	}
 
-              <img id='inputImage' alt= '' src={imageUrl}  width='500px' height='auto'></img>  
-                {/*bounding-box css + style using 'box' prop from App.js state */}
-              <div className='bounding-box' 
-              style={{top: box.topRow, right: box.rightCol, left: box.leftCol, bottom: box.bottomRow}}>
-              
-              </div>    
-             
-            </div>
-            
-        </div>
-        )
+      </div>
+    </div>
+  );
 }
-// 
-export default FaceRecognition
+
+export default FaceRecognition;
+
