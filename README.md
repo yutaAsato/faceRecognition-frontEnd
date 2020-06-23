@@ -1,5 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+Install 'heroku buildpacks:set mars/create-react-app' for Heroku deployment h10 app crash error' 
+
 ## Available Scripts
 
 In the project directory, you can run:
