@@ -1,5 +1,11 @@
 import React from "react";
 
+//Redux imports
+import { connect } from "react-redux";
+
+//actions imports
+import { onSubmitSignin } from "../../redux/actions/userAction";
+
 //State takes the input from 'onEmailChange' and 'onPasswordChange' functions which take the 'e.target.value' from the onChange method
 //attached to the inputs. At the same time, 'onSubmitSignin' recieves teh data from this.state and uses it in the fetch() call to check if the
 // inputted email and password exist in the database, if so it fires the 'onRouteChange' function in App.js to switch to the login page.
@@ -22,22 +28,14 @@ class Signin extends React.Component {
     this.setState({ signInPassword: e.target.value });
   };
 
-  onSubmitSignin = () => {
-    fetch("https://infinite-badlands-29250.herokuapp.com/signin", {
-      method: "post",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        email: this.state.signInEmail,
-        password: this.state.signInPassword,
-      }),
-    })
-      .then((response) => response.json())
-      .then((user) => {
-        if (user.id) {
-          this.props.loadUser(user);
-          this.props.onRouteChange("home");
-        }
-      });
+  handleSubmit = (event) => {
+    event.preventDefault();
+
+    const userData = {
+      email: this.state.signInEmail,
+      password: this.state.signInPassword,
+    };
+    this.props.onSubmitSignin(userData);
   };
 
   //copy and paste from 'tachyons sign in', 'article' wrapper is from 'tachyons cards' to create a box around teh form.
@@ -77,7 +75,7 @@ class Signin extends React.Component {
             </fieldset>
             <div className="">
               <input
-                onClick={this.onSubmitSignin}
+                onClick={this.handleSubmit}
                 className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
                 type="submit"
                 value="Sign in"
@@ -99,4 +97,11 @@ class Signin extends React.Component {
   }
 }
 //
-export default Signin;
+
+const mapStateToProps = (state) => ({});
+
+const mapActionToProps = {
+  onSubmitSignin,
+};
+
+export default connect(mapStateToProps, mapActionToProps)(Signin);
