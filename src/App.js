@@ -49,92 +49,29 @@ if (token) {
 
 //--------------variables-----------------
 
-const particleOption = {
-  particles: {
-    number: {
-      value: 200,
-      density: {
-        enable: true,
-        value_area: 800,
-      },
-    },
-  },
-};
-
-//---------------state-------------------------------
-
-// const initialState = {
-//   input: "",
-
-//   imageUrl: "",
-
-//   boxes: [],
-
-//   route: "signin",
-
-//   isSignedIn: false,
-
-//   user: {
-//     id: "",
-//     name: "",
-//     email: "",
-//     entries: 0,
-//     joined: "",
+// const particleOption = {
+//   particles: {
+//     number: {
+//       value: 200,
+//       density: {
+//         enable: true,
+//         value_area: 800,
+//       },
+//     },
 //   },
 // };
 
-class App extends Component {
-  // constructor() {
-  //   super();
-  //   this.state = initialState;
-  // }
-
-  //--------functions--------------------------------------------------------------
-
-  //recieves data from 'register.js', when new users submits details this function fires and updates the newly
-  //created 'user' state above.
-  // loadUser = (data) => {
-  //   this.setState({
-  //     user: {
-  //       id: data.id,
-  //       name: data.name,
-  //       email: data.email,
-  //       entries: data.entries,
-  //       joined: data.joined,
-  //     },
-  //   });
-  // };
-
-  //function used to set 'route' state and 'isSignedin' state ,it takes parameters from Signin,navigation,Registerjs//
-  // onRouteChange = (route) => {
-  //   if (route === "signout") {
-  //     this.setState(initialState);
-  //   } else if (route === "home") {
-  //     this.setState({ isSignedIn: true });
-  //   }
-  //   this.setState({ route: route });
-  //   console.log(initialState);
-  //   console.log(this.state);
-  // };
-
-  //---------------------------------
-
-  render() {
-    // const { isSignedIn, imageUrl, route, boxes } = this.state;
-
-    return (
-      <Provider store={store}>
-        <div className="App">
-          <Particles className="particles" params={particleOption} />
-          <Navigation />
-          <Logo />
-          <Home />
-        </div>
-      </Provider>
-    );
-  }
+function App() {
+  return (
+    <Provider store={store}>
+      <div className="App">
+        {/* <Particles className="particles" params={particleOption} /> */}
+        <Navigation />
+        <Logo />
+        <Home />
+      </div>
+    </Provider>
+  );
 }
 
 export default App;
-
-//--newfeature--

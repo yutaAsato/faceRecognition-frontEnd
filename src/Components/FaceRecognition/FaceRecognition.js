@@ -19,6 +19,9 @@ import Card from "@material-ui/core/Container";
 import { CardMedia } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 
+//Component
+import { CardData } from "../Card";
+
 //--------------
 const styles = {
   card: {
@@ -46,6 +49,8 @@ export class FaceRecognition extends Component {
       isSignedIn: false,
 
       faceData: {},
+
+      toggle: false,
     };
   }
   //---------------------------------------
@@ -55,15 +60,13 @@ export class FaceRecognition extends Component {
     const image = document.getElementById("inputimage");
     const width = Number(image.width);
     const height = Number(image.height);
-    console.log(height, width);
 
     //map() is used on on the regions which contains the arrays and loops the region_info which
     //contains the boundingbox object. map() returns an object for each face detected, which is then
     //put into an array in the boxes initial state. This is then map() again in facerecognitionjs
     //to output the border boxes for each face.
-    return data.outputs[0].data.regions.map((face) => {
+    return data.results[0].outputs[2].data.regions.map((face) => {
       const clarifaiFace = face.region_info.bounding_box;
-      console.log(clarifaiFace);
       return {
         leftCol: clarifaiFace.left_col * width,
         topRow: clarifaiFace.top_row * height,
@@ -115,60 +118,64 @@ export class FaceRecognition extends Component {
   }
 
   ///setstate for each face
-  onMouseEnter = (data) => {
-    const gender = data.data.concepts[20].name;
+  // onMouseEnter = (data) => {
+  //   const gender = data.data.concepts[20].name;
 
-    this.setState({
-      faceData: [
-        {
-          [data.data.concepts[0].name]:
-            Math.floor(data.data.concepts[0].value * 1000) / 10,
-        },
-        {
-          [data.data.concepts[20].name]:
-            Math.floor(data.data.concepts[20].value * 1000) / 10,
-        },
-        {
-          [data.data.concepts[21].name]:
-            Math.floor(data.data.concepts[21].value * 1000) / 10,
-        },
-        {
-          [data.data.concepts[22].name]:
-            Math.floor(data.data.concepts[22].value * 1000) / 10,
-        },
-        {
-          [data.data.concepts[23].name]:
-            Math.floor(data.data.concepts[23].value * 1000) / 10,
-        },
-        {
-          [data.data.concepts[24].name]:
-            Math.floor(data.data.concepts[24].value * 1000) / 10,
-        },
-        {
-          [data.data.concepts[25].name]:
-            Math.floor(data.data.concepts[25].value * 1000) / 10,
-        },
-        {
-          [data.data.concepts[26].name]:
-            Math.floor(data.data.concepts[26].value * 1000) / 10,
-        },
-        {
-          [data.data.concepts[27].name]:
-            Math.floor(data.data.concepts[27].value * 1000) / 10,
-        },
-        {
-          [data.data.concepts[28].name]:
-            Math.floor(data.data.concepts[28].value * 1000) / 10,
-        },
-      ],
-    });
-    console.log(data);
-  };
+  //   this.setState({
+  //     faceData: [
+  //       {
+  //         [data.data.concepts[0].name]:
+  //           Math.floor(data.data.concepts[0].value * 1000) / 10,
+  //       },
+  //       {
+  //         [data.data.concepts[20].name]:
+  //           Math.floor(data.data.concepts[20].value * 1000) / 10,
+  //       },
+  //       {
+  //         [data.data.concepts[21].name]:
+  //           Math.floor(data.data.concepts[21].value * 1000) / 10,
+  //       },
+  //       {
+  //         [data.data.concepts[22].name]:
+  //           Math.floor(data.data.concepts[22].value * 1000) / 10,
+  //       },
+  //       {
+  //         [data.data.concepts[23].name]:
+  //           Math.floor(data.data.concepts[23].value * 1000) / 10,
+  //       },
+  //       {
+  //         [data.data.concepts[24].name]:
+  //           Math.floor(data.data.concepts[24].value * 1000) / 10,
+  //       },
+  //       {
+  //         [data.data.concepts[25].name]:
+  //           Math.floor(data.data.concepts[25].value * 1000) / 10,
+  //       },
+  //       {
+  //         [data.data.concepts[26].name]:
+  //           Math.floor(data.data.concepts[26].value * 1000) / 10,
+  //       },
+  //       {
+  //         [data.data.concepts[27].name]:
+  //           Math.floor(data.data.concepts[27].value * 1000) / 10,
+  //       },
+  //       {
+  //         [data.data.concepts[28].name]:
+  //           Math.floor(data.data.concepts[28].value * 1000) / 10,
+  //       },
+  //     ],
+  //   });
+  //   console.log(data);
+  // };
 
   //--------------
   render() {
+    //--------------------------------------------
+    const clarifaiAPIReturn = this.props.user;
+
+    //--------------------------------------------------
     //destructures
-    const { isSignedIn, imageUrl, route, boxes, faceData } = this.state;
+    const { isSignedIn, imageUrl, route, boxes, faceData, input } = this.state;
     const { cboxes, regions, clarifaiData } = this.props.user;
     const { classes } = this.props;
     //
@@ -176,32 +183,30 @@ export class FaceRecognition extends Component {
     // console.log(Object.getOwnPropertyNames(faceData[1]));
 
     //profile markup
-    let profileMarkup = faceData[0]
-      ? faceData.map((x, idx) => {
-          return (
-            <ul>
-              <li>
-                <span className="label">
-                  {Object.getOwnPropertyNames(faceData[idx])} {"  "}
-                </span>
-                <span className="info">{Object.values(faceData[idx])}</span>
-              </li>
-            </ul>
-          );
-        })
-      : null;
+    // let profileMarkup = faceData[0]
+    //   ? faceData.map((x, idx) => {
+    //       return (
+    //         <ul>
+    //           <li>
+    //             <span className="label">
+    //               {Object.getOwnPropertyNames(faceData[idx])} {"  "}
+    //             </span>
+    //             <span className="info">{Object.values(faceData[idx])}</span>
+    //           </li>
+    //         </ul>
+    //       );
+    //     })
+    //   : null;
 
     console.log(this.state);
     return (
-      <Fragment>
-        <Grid container>
-          <Grid item xs={12}>
-            <ImageLinkForm
-              onInputChange={this.onInputChange}
-              onButtonSubmit={this.onButtonSubmit}
-            />
-          </Grid>
+      <>
+        <ImageLinkForm
+          onInputChange={this.onInputChange}
+          onButtonSubmit={this.onButtonSubmit}
+        />
 
+        {/* 
           <Grid item sm={6}>
             {profileMarkup && (
               <div
@@ -234,46 +239,15 @@ export class FaceRecognition extends Component {
                 {profileMarkup}
               </div>
             )}
-          </Grid>
-          <Grid item sm={6} xs={12}>
-            <div className="mainContainer">
-              <div className="mainImageContainer">
-                <div className="mainImageWrapBox">
-                  <div className="mainImageWrap">
-                    <img
-                      className="mainImage"
-                      id="inputimage"
-                      alt=""
-                      src={imageUrl}
-                      width="600px"
-                      height="400px"
-                    />
-                    {boxes.map((box, index) => {
-                      return (
-                        <div
-                          onMouseEnter={() =>
-                            this.onMouseEnter(
-                              clarifaiData.outputs[0].data.regions[index]
-                            )
-                          }
-                          key={box.topRow}
-                          className="bounding-box  "
-                          style={{
-                            top: box.topRow,
-                            right: box.rightCol,
-                            bottom: box.bottomRow,
-                            left: box.leftCol,
-                          }}
-                        ></div>
-                      );
-                    })}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </Grid>
-        </Grid>
-      </Fragment>
+          </Grid> */}
+
+        <CardData
+          clarifaiData={clarifaiData}
+          imageUrl={imageUrl}
+          boxes={boxes}
+          input={input}
+        />
+      </>
     );
   }
 }
