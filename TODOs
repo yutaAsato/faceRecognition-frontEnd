@@ -1,0 +1,5 @@
+-fix register from, 'loadUser' doesn not seem to exist anymore.
+
+
+
+//deploy databse adn server to heroku and front end to netlify

@@ -1,15 +1,67 @@
-
 /*copy an paste from the clarifai website demo*/
 
 .bounding-box {
-    position: absolute;
-    box-shadow: 0 0 0 3px #149df2 inset;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    -ms-flex-pack: center;
-    justify-content: center;
-    cursor: pointer;
-    
+  position: absolute;
+  box-shadow: 0 0 0 3px #149df2 inset;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -ms-flex-pack: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/* on the actual image */
+.cropped {
+  margin: auto;
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+}
+
+.croppedimg {
+  width: 50px;
+  height: 50px;
+
+  margin-top: -20;
+  margin-right: -257;
+  margin-bottom: -79;
+  margin-left: -59;
+}
+
+.probability {
+  border: "solid 1px";
+}
+
+li {
+  position: relative;
+  padding-bottom: 15px;
+  font-size: 17px;
+  border-bottom: solid 0.2 px grey;
+  list-style: none;
+}
+
+span.info {
+  position: absolute;
+  right: 0px;
+  padding-left: 10px;
+  padding-right: 10px;
+  align-content: right;
+}
+
+span.label {
+  padding-right: 150px;
+  align-content: center;
+}
+
+.mainImageWrap {
+  margin: 50px;
+  position: absolute;
+  flex: 1 1 auto;
+}
+
+.mainImage {
+  max-width: 100%;
+  max-height: 100%;
 }
