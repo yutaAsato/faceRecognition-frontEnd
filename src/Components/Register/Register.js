@@ -1,4 +1,7 @@
 import React from "react";
+import { connect } from "react-redux";
+
+import { getUser, onSubmitRegister } from "../../redux/actions/userAction";
 
 //------------------
 
@@ -26,22 +29,13 @@ class Register extends React.Component {
   };
 
   onSubmitSignin = () => {
-    fetch("http://localhost:3000/register", {
-      method: "post",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        email: this.state.email,
-        password: this.state.password,
-        name: this.state.name,
-      }),
-    })
-      .then((response) => response.json())
-      .then((user) => {
-        if (user.id) {
-          this.props.loadUser(user);
-          this.props.onRouteChange("home");
-        }
-      });
+    const data = {
+      email: this.state.email,
+      password: this.state.password,
+      name: this.state.name,
+    };
+
+    this.props.onSubmitRegister(data);
   };
 
   //-------------------------
@@ -104,5 +98,12 @@ class Register extends React.Component {
     );
   }
 }
+
+const mapStateToProps = (state) => ({});
+
+const mapActionToProps = {
+  onSubmitRegister,
+  getUser,
+};
 //
-export default Register;
+export default connect(mapStateToProps, mapActionToProps)(Register);

@@ -9,7 +9,6 @@ function CardData({ clarifaiData, boxes, imageUrl, input }) {
   const [age, setAge] = React.useState();
   const [gender, setGender] = React.useState();
   const [race, setRace] = React.useState();
-  const [thumb, setThumb] = React.useState();
 
   const [currentBox, setCurrentBox] = React.useState(0);
 
@@ -97,31 +96,31 @@ function CardData({ clarifaiData, boxes, imageUrl, input }) {
 
   //thumbmarkup
 
-  let thumbnail = getBoxes.length ? (
-    <div style={{ width: "100%", position: "relative" }}>
-      {/* <div style={{ margin: "50px", position: "absolute", flex: "1 1 auto" }}> */}
-      <div style={{ overflow: "hidden" }}>
-        <img
-          ref={test}
-          //   className="mainImage"
-          //   id={"test"}
-          alt=""
-          src={input}
-          style={{}}
-        />
-      </div>
-      {/* <div
-          className="bounding-box "
-          style={{
-            top: getBoxes[currentBox].topRow,
-            right: getBoxes[currentBox].rightCol,
-            bottom: getBoxes[currentBox].bottomRow,
-            left: getBoxes[currentBox].leftCol,
-          }}
-        ></div> */}
-      {/* </div> */}
-    </div>
-  ) : null;
+  // let thumbnail = getBoxes.length ? (
+  //   <div style={{ width: "100%", position: "relative" }}>
+  //     {/* <div style={{ margin: "50px", position: "absolute", flex: "1 1 auto" }}> */}
+  //     <div style={{ overflow: "hidden" }}>
+  //       <img
+  //         ref={test}
+  //         //   className="mainImage"
+  //         //   id={"test"}
+  //         alt=""
+  //         src={input}
+  //         style={{}}
+  //       />
+  //     </div>
+  //     {/* <div
+  //         className="bounding-box "
+  //         style={{
+  //           top: getBoxes[currentBox].topRow,
+  //           right: getBoxes[currentBox].rightCol,
+  //           bottom: getBoxes[currentBox].bottomRow,
+  //           left: getBoxes[currentBox].leftCol,
+  //         }}
+  //       ></div> */}
+  //     {/* </div> */}
+  //   </div>
+  // ) : null;
 
   //-------------------------------------
 
@@ -189,20 +188,6 @@ function CardData({ clarifaiData, boxes, imageUrl, input }) {
           }}
         />
       </div>
-
-      {/* {thumbnail} */}
-
-      {/* <div>
-        {boxes.map((box, idx) => (
-          <img
-            className="mainImage"
-            id={idx}
-            alt=""
-            src={imageUrl}
-            style={{ width: "400px" }}
-          />
-        ))}
-      </div> */}
     </div>
   );
 }

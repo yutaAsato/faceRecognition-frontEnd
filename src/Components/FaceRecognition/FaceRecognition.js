@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import "./FaceRecognition.css";
 
 //Redux imports
@@ -9,14 +9,9 @@ import { handleAPI, handleImage, setBox } from "../../redux/actions/userAction";
 
 //components
 import ImageLinkForm from "../ImageLinkForm/ImageLinkForm";
-import Canvas from "./Canvas";
 
 //mui
-import Grid from "@material-ui/core/Grid";
-import Paper from "@material-ui/core/Paper";
-import Container from "@material-ui/core/Container";
-import Card from "@material-ui/core/Container";
-import { CardMedia } from "@material-ui/core";
+
 import { withStyles } from "@material-ui/core/styles";
 
 //Component
@@ -117,57 +112,6 @@ export class FaceRecognition extends Component {
     }
   }
 
-  ///setstate for each face
-  // onMouseEnter = (data) => {
-  //   const gender = data.data.concepts[20].name;
-
-  //   this.setState({
-  //     faceData: [
-  //       {
-  //         [data.data.concepts[0].name]:
-  //           Math.floor(data.data.concepts[0].value * 1000) / 10,
-  //       },
-  //       {
-  //         [data.data.concepts[20].name]:
-  //           Math.floor(data.data.concepts[20].value * 1000) / 10,
-  //       },
-  //       {
-  //         [data.data.concepts[21].name]:
-  //           Math.floor(data.data.concepts[21].value * 1000) / 10,
-  //       },
-  //       {
-  //         [data.data.concepts[22].name]:
-  //           Math.floor(data.data.concepts[22].value * 1000) / 10,
-  //       },
-  //       {
-  //         [data.data.concepts[23].name]:
-  //           Math.floor(data.data.concepts[23].value * 1000) / 10,
-  //       },
-  //       {
-  //         [data.data.concepts[24].name]:
-  //           Math.floor(data.data.concepts[24].value * 1000) / 10,
-  //       },
-  //       {
-  //         [data.data.concepts[25].name]:
-  //           Math.floor(data.data.concepts[25].value * 1000) / 10,
-  //       },
-  //       {
-  //         [data.data.concepts[26].name]:
-  //           Math.floor(data.data.concepts[26].value * 1000) / 10,
-  //       },
-  //       {
-  //         [data.data.concepts[27].name]:
-  //           Math.floor(data.data.concepts[27].value * 1000) / 10,
-  //       },
-  //       {
-  //         [data.data.concepts[28].name]:
-  //           Math.floor(data.data.concepts[28].value * 1000) / 10,
-  //       },
-  //     ],
-  //   });
-  //   console.log(data);
-  // };
-
   //--------------
   render() {
     //--------------------------------------------
@@ -180,66 +124,12 @@ export class FaceRecognition extends Component {
     const { classes } = this.props;
     //
 
-    // console.log(Object.getOwnPropertyNames(faceData[1]));
-
-    //profile markup
-    // let profileMarkup = faceData[0]
-    //   ? faceData.map((x, idx) => {
-    //       return (
-    //         <ul>
-    //           <li>
-    //             <span className="label">
-    //               {Object.getOwnPropertyNames(faceData[idx])} {"  "}
-    //             </span>
-    //             <span className="info">{Object.values(faceData[idx])}</span>
-    //           </li>
-    //         </ul>
-    //       );
-    //     })
-    //   : null;
-
-    console.log(this.state);
     return (
       <>
         <ImageLinkForm
           onInputChange={this.onInputChange}
           onButtonSubmit={this.onButtonSubmit}
         />
-
-        {/* 
-          <Grid item sm={6}>
-            {profileMarkup && (
-              <div
-                style={{
-                  position: "relative",
-                  paddingTop: "10px",
-                  paddingBottom: "10px",
-                }}
-              >
-                <span
-                  className="label"
-                  style={{
-                    paddingLeft: "50px",
-                    fontSize: "20px",
-                    paddingTop: "30px",
-                    color: "grey",
-                  }}
-                >
-                  DEMOGRAPHIC
-                </span>
-                <span
-                  className="info"
-                  style={{
-                    fontSize: "20px",
-                    color: "grey",
-                  }}
-                >
-                  PROBABILITY %
-                </span>
-                {profileMarkup}
-              </div>
-            )}
-          </Grid> */}
 
         <CardData
           clarifaiData={clarifaiData}

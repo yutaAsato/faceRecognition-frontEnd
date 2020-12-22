@@ -28,6 +28,21 @@ export const onSubmitSignin = (data) => (dispatch) => {
     });
 };
 
+//register
+export const onSubmitRegister = (data) => (dispatch) => {
+  axios
+    .post("register", data)
+    .then((res) => {
+      console.log("userActions", res.data);
+      localStorage.setItem("token", "Bearer " + res.data);
+      axios.defaults.headers.common["Authorization"] = "Bearer " + res.data;
+      dispatch(getUser());
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
 //signOut
 export const signOut = () => (dispatch) => {
   localStorage.removeItem("token");

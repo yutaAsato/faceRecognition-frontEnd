@@ -1,12 +1,9 @@
 import React from "react";
 
 function useBox(id, clarifaiData) {
-  console.log("usebox", id);
-  console.log("clarifaiData useBox", Object.keys(clarifaiData).length);
   //calculateFace
 
   if (id && Object.keys(clarifaiData).length) {
-    console.log("onsode if");
     const width = Number(id.width);
     const height = Number(id.height);
     console.log(height, width);
