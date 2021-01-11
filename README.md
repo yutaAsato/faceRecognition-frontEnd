@@ -1,5 +1,3 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 ## Facial Recognition Web Application
 
 This web application can detect human faces in an image and show a list of probability scores based on age, gender and ethnicity. The client UI is built using React with Redux managing UI and server state, REST API is built using node.js/express.js connected to a PostgreSQL database. The prediction data uses the Clarifai API. 
