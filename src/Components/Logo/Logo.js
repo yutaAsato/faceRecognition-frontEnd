@@ -7,7 +7,10 @@ import Tilt from "react-tilt";
 
 const Logo = () => {
   return (
-    <div className="ma2 mt0">
+    <div
+      className="ma2 mt0"
+      style={{ display: "flex", justifyContent: "center", marginTop: "20px" }}
+    >
       <Tilt
         className="Tilt br2 shadow-2"
         options={{ max: 60 }}
