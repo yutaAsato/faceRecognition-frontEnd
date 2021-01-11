@@ -2,6 +2,8 @@
 
 This web application can detect human faces in an image and show a list of probability scores based on age, gender and ethnicity. The client UI is built using React with Redux managing UI and server state, REST API is built using node.js/express.js connected to a PostgreSQL database. The prediction data uses the Clarifai API. 
 
+DEMO CREDENTIALS: Email: admin@gmail.com, Password: 123
+
 ## Features
 
 'Sign in/Register' requests to the REST server are handled using axios with server side form validation. JWT (JSON Web Tokens) are used for user authentification and Bcrypt for password hashing. User credentials are stored in a PostgreSQL databse.
