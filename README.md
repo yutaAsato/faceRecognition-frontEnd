@@ -1,6 +1,14 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-Install 'heroku buildpacks:set mars/create-react-app' for Heroku deployment h10 app crash error' 
+## Facial Recognition Web Application
+
+This web application can detect human faces in an image and show a list of probability scores based on age, gender and ethnicity. The client UI is built using React with Redux managing UI and server state, REST API is built using node.js/express.js connected to a PostgreSQL database. The prediction data is returned using the Clarifai API. 
+
+## Features
+
+The login/register requests to REST server are handled using axios with server side form validation. JWT (JSON Web Tokens) are used for user authentification and Bcrypt for password hashing. User credentials are stored in a PostgreSQL databse.
+
+[![Screen-Shot-2021-01-11-at-10-26-02.png](https://i.postimg.cc/qRZSVYBM/Screen-Shot-2021-01-11-at-10-26-02.png)](https://postimg.cc/2bh2n0BP)
 
 ## Available Scripts
 
