@@ -87,7 +87,7 @@ class Signin extends React.Component {
                 href="#0"
                 className="f6 link dim black db pointer"
               >
-                Register
+                {/* Register */}
               </p>
             </div>
           </div>
