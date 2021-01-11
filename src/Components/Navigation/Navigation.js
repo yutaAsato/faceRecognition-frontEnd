@@ -25,16 +25,17 @@ const Navigation = ({ user, signOut }) => {
       </nav>
     );
   } else {
-    return (
-      <nav style={{ display: "flex", justifyContent: "flex-end" }}>
-        <p onClick className="f3 link dim black underline pa3 pointer">
-          Sign In
-        </p>
-        <p onClick className="f3 link dim black underline pa3 pointer">
-          Register
-        </p>
-      </nav>
-    );
+    return null;
+    // return (
+    //   <nav style={{ display: "flex", justifyContent: "flex-end" }}>
+    //     <p onClick className="f3 link dim black underline pa3 pointer">
+    //       Sign In
+    //     </p>
+    //     <p onClick className="f3 link dim black underline pa3 pointer">
+    //       Register
+    //     </p>
+    //   </nav>
+    // );
   }
 };
 

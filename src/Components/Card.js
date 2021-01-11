@@ -19,12 +19,6 @@ function CardData({ clarifaiData, boxes, imageUrl, input }) {
 
   const getBoxes = useBox(test.current, clarifaiData);
 
-  console.log("clarifaiData CARD", clarifaiData);
-
-  console.log("getBox return", getBoxes);
-
-  console.log(currentBox);
-
   function setGenderState(data) {
     setGender([data.data.concepts[0]]);
   }
@@ -93,36 +87,6 @@ function CardData({ clarifaiData, boxes, imageUrl, input }) {
   }
 
   //--------------------------------
-
-  //thumbmarkup
-
-  // let thumbnail = getBoxes.length ? (
-  //   <div style={{ width: "100%", position: "relative" }}>
-  //     {/* <div style={{ margin: "50px", position: "absolute", flex: "1 1 auto" }}> */}
-  //     <div style={{ overflow: "hidden" }}>
-  //       <img
-  //         ref={test}
-  //         //   className="mainImage"
-  //         //   id={"test"}
-  //         alt=""
-  //         src={input}
-  //         style={{}}
-  //       />
-  //     </div>
-  //     {/* <div
-  //         className="bounding-box "
-  //         style={{
-  //           top: getBoxes[currentBox].topRow,
-  //           right: getBoxes[currentBox].rightCol,
-  //           bottom: getBoxes[currentBox].bottomRow,
-  //           left: getBoxes[currentBox].leftCol,
-  //         }}
-  //       ></div> */}
-  //     {/* </div> */}
-  //   </div>
-  // ) : null;
-
-  //-------------------------------------
 
   return (
     <div

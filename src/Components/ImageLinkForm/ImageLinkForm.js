@@ -8,9 +8,10 @@ const ImageLinkForm = ({ onInputChange, onButtonSubmit }) => {
   return (
     <div>
       <p className="f3">
-        Analyze images and get information on age, gender, and multicultural
-        appearance for each detected face based on facial characteristics.
+        Analyze images and get information on age, gender, and ethnicity for
+        each detected face based on facial characteristics.
       </p>
+      <p>Just enter an image URL below!</p>
       <div className="center">
         <div className="form center pa4 br3 shadow-5">
           <input
