@@ -1,6 +1,22 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Facial Recognition Web Application
 
-Install 'heroku buildpacks:set mars/create-react-app' for Heroku deployment h10 app crash error' 
+This web application can detect human faces in an image and show a list of probability scores based on age, gender and ethnicity. The client UI is built using React with Redux managing UI and server state, REST API is built using node.js/express.js connected to a PostgreSQL database. The prediction data uses the Clarifai API. Frontend is hosted on Netlify and backend on Heroku.
+
+DEMO CREDENTIALS: Email: admin@gmail.com, Password: 123
+
+## Features
+
+'Sign in/Register' requests to the REST server are handled using axios with server side form validation. JWT (JSON Web Tokens) are used for user authentification and Bcrypt for password hashing. User credentials are stored in a PostgreSQL databse.
+
+[![Screen-Shot-2021-01-11-at-10-26-02.png](https://i.postimg.cc/qRZSVYBM/Screen-Shot-2021-01-11-at-10-26-02.png)](https://postimg.cc/2bh2n0BP)
+
+The main dashboard has an Image input component which allows the user to input an image URL. When the button is clicked, a request is made to the Clarifai API which responds with the relevant predict data. The dashboard also shows a count for the number of searches the user has made.
+
+[![Screen-Shot-2021-01-11-at-10-27-49.png](https://i.postimg.cc/g0RSxJKR/Screen-Shot-2021-01-11-at-10-27-49.png)](https://postimg.cc/zLzSMq6X)
+
+The JSON data from the API contains coordinates for each detected human face which is then mapped and display on the image. The JSON response also contains the demographic predict data for each face which is also mapped and displayed. Hovering over each detected face will show the corresponding data.
+
+[![Screen-Shot-2021-01-11-at-10-28-38.png](https://i.postimg.cc/YCJ31HnH/Screen-Shot-2021-01-11-at-10-28-38.png)](https://postimg.cc/XrkdbT6H)
 
 ## Available Scripts
 
